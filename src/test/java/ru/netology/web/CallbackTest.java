@@ -1,3 +1,5 @@
+package ru.netology.web;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -27,7 +29,7 @@ public class CallbackTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
+        //options.addArguments("--headless");
         driver = new ChromeDriver(options);
 
     }
@@ -44,8 +46,11 @@ public class CallbackTest {
 
         WebElement formElement = driver.findElement(By.cssSelector("form"));
         List<WebElement> inputs = formElement.findElements(By.cssSelector("input"));
-        inputs.get(0).sendKeys("Василий");
-        inputs.get(1).sendKeys("+79270000000");
+        //inputs.get(0).sendKeys("Василий");
+        //driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иван Петров-Иванов");
+        //inputs.get(1).sendKeys("+79270000000");
+        driver.findElement(By.cssSelector("[data-test-id=name] input")).sendKeys("Василий");
+        driver.findElement(By.cssSelector("[data-test-id=phone] input")).sendKeys("+79270000000");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.className("button__text")).click();
         WebElement resultElement = driver.findElement(By.cssSelector("[data-test-id='order-success']"));
